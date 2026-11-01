@@ -78,48 +78,54 @@ const services = [
 const pricing = [
   {
     name: "Starter Page",
-    price: "KSh 5,000 – 8,000",
-    note: "One-time",
+    price: "KSh 5,000–8,000",
+    note: "One-time payment",
     description:
-      "A simple landing page so customers can find you and reach you.",
+      "A professional single-page website that helps customers discover your business and contact you.",
     includes: [
-      "Single mobile-friendly page",
-      "WhatsApp enquiry button",
-      "Services and contact details",
+      "One responsive landing page",
+      "Services and contact information",
+      "WhatsApp contact button",
+      "Basic on-page SEO",
     ],
   },
   {
     name: "Business Website",
-    price: "KSh 12,000 – 20,000",
-    note: "One-time",
-    description: "A full website for a salon, shop, or service business.",
+    price: "KSh 12,000–25,000",
+    note: "One-time payment",
+    description:
+      "A complete online presence for salons, barbershops, shops, and service businesses.",
     includes: [
       "Up to 5 pages",
-      "Contact form and WhatsApp link",
-      "Mobile-first design",
+      "Mobile-friendly custom design",
+      "WhatsApp and contact links",
+      "Basic SEO and social links",
     ],
   },
   {
-    name: "Custom System",
-    price: "KSh 40,000 – 70,000",
-    note: "One-time, scope-based",
+    name: "Custom Web System",
+    price: "From KSh 50,000",
+    note: "Quoted per project",
     description:
-      "Invoicing, bookings, or stock tools built around how you work.",
+      "A tailored web application for businesses that need more than a standard website.",
     includes: [
-      "Database and login",
-      "Built around your workflow",
-      "Testing and handover",
+      "Scope-defined features and workflows",
+      "Database and user authentication where required",
+      "Responsive interface",
+      "Testing and deployment assistance",
     ],
   },
   {
-    name: "Monthly Care",
-    price: "KSh 1,000 – 2,000",
+    name: "Website Care",
+    price: "KSh 2,000–4,000",
     note: "Per month",
-    description: "Ongoing help to keep your site running and up to date.",
+    description:
+      "Ongoing maintenance for existing websites that need regular attention.",
     includes: [
-      "Small fixes and updates",
-      "Hosting support",
-      "Quick WhatsApp replies",
+      "Routine updates and checks",
+      "Small content edits",
+      "Basic troubleshooting",
+      "Maintenance support via WhatsApp",
     ],
   },
 ];
@@ -297,7 +303,6 @@ function App() {
                     index === 0 ? "md:col-span-2" : ""
                   }`}
                 >
-                  {/* Project screenshot */}
                   <div className="mb-7 overflow-hidden rounded-xl border border-white/10 bg-[#080d18]">
                     <img
                       src={project.image}
@@ -377,6 +382,7 @@ function App() {
           </div>
         </div>
       </section>
+
       {/* Pricing */}
       <section
         id="pricing"
@@ -386,12 +392,15 @@ function App() {
           <p className="mb-3 text-xs font-semibold tracking-[0.2em] text-sky-400 uppercase">
             Pricing
           </p>
+
           <h2 className="max-w-2xl text-3xl leading-tight font-semibold tracking-tight sm:text-4xl">
             Clear prices, no surprises.
           </h2>
+
           <p className="mt-4 max-w-xl text-sm leading-7 text-slate-400">
-            Honest starting prices for small businesses. The final quote depends
-            on what you need, and I confirm it before any work starts.
+            Straightforward starting prices for small businesses. Every project
+            is scoped before work begins, so you know what is included and what
+            it costs. Larger projects receive a tailored quotation.
           </p>
 
           <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
@@ -401,32 +410,53 @@ function App() {
                 className="flex flex-col rounded-2xl border border-white/[0.09] bg-[#0d1422] p-6 transition duration-300 hover:-translate-y-1 hover:border-sky-400/30"
               >
                 <h3 className="text-lg font-semibold">{plan.name}</h3>
+
                 <p className="mt-4 text-xl font-semibold tracking-tight text-sky-300">
                   {plan.price}
                 </p>
+
                 <p className="mt-1 text-xs text-slate-500">{plan.note}</p>
+
                 <p className="mt-4 text-sm leading-7 text-slate-400">
                   {plan.description}
                 </p>
 
-                <ul className="mt-5 space-y-2 border-t border-white/10 pt-5 text-xs text-slate-400">
+                <ul className="mt-5 flex-1 space-y-3 border-t border-white/10 pt-5 text-xs leading-5 text-slate-400">
                   {plan.includes.map((item) => (
-                    <li key={item} className="flex gap-2">
-                      <span className="text-sky-400">✓</span>
-                      {item}
+                    <li key={item} className="flex items-start gap-2">
+                      <span className="mt-0.5 text-sky-400" aria-hidden="true">
+                        ✓
+                      </span>
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>
+
+                <a
+                  href={`https://wa.me/254703305985?text=${encodeURIComponent(
+                    `Hi Simon, I'm interested in your ${plan.name} service (${plan.price}). Could we discuss my requirements?`,
+                  )}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full border border-sky-400/30 px-4 py-3 text-sm font-medium text-sky-300 transition hover:bg-sky-400/10"
+                >
+                  <MessageCircle size={16} />
+                  Enquire now
+                </a>
               </article>
             ))}
           </div>
 
-          <p className="mt-5 text-xs text-slate-500">
-            50% upfront to start, the balance on delivery. Domain and hosting
-            are paid separately.
+          <p className="mt-6 text-xs leading-6 text-slate-500">
+            Website prices exclude domain registration and hosting unless stated
+            in your quotation. Custom integrations, paid third-party services,
+            and additional features may cost extra. Projects typically require a
+            50% deposit, with the balance due at the agreed milestone. Monthly
+            care excludes new features and major redesigns.
           </p>
         </div>
       </section>
+
       {/* About */}
       <section
         id="about"
